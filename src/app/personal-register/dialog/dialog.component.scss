@@ -1,0 +1,13 @@
+.dialog {
+    width: 300px;
+    padding: 2rem;
+    border-radius: 8px;
+
+    .btns {
+        display: flex;
+        flex-direction: row-reverse;
+
+        margin: 1rem;
+
+    }
+}

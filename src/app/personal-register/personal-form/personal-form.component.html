@@ -1,22 +1,52 @@
 <mat-card class="form-card">
     <mat-card-content>
-        <form action="#">
+        <form action="#" [formGroup]="form">
             <mat-form-field>
                 <mat-label>نام</mat-label>
-                <input matInput placeholder="نام خود را وارد کنید" required>
+                <input matInput placeholder="نام خود را وارد کنید" formControlName="fname">
             </mat-form-field>
             
             <mat-form-field class="example-full-width">
                 <mat-label> نام خانوادگی</mat-label>
-                <input matInput placeholder="نام خانوادگی خود را وارد کنید" required>
+                <input matInput placeholder="نام خانوادگی خود را وارد کنید" formControlName="lname">
             </mat-form-field>
             
             <mat-form-field class="example-full-width">
                 <mat-label> کد ملی</mat-label>
-                <input matInput placeholder="کد ملی خود را وارد کنید" required>
+                <input matInput type="number" placeholder="کد ملی خود را وارد کنید" formControlName="nationalCode">
+            </mat-form-field>  
+
+            <ng-persian-datepicker #picker class="date-picker" > 
+                <mat-form-field>
+                    <mat-label>تاریخ تولد</mat-label>
+                    <input matInput type="text" formControlName = "dob">
+                </mat-form-field>
+                
+            </ng-persian-datepicker>
+
+            <mat-radio-group class="gender" formControlName="gender">
+                <mat-label>جنسیت :</mat-label>
+                <!-- <input type="radio" formControlName="gender" name="" id="" value="1"> -->
+                <mat-radio-button  value="1">خانم</mat-radio-button>
+                <mat-radio-button  value="2">آقا</mat-radio-button>
+            </mat-radio-group>
+
+            <mat-form-field>
+                <mat-label>استان</mat-label>
+                <mat-select  formControlName="province" >
+                  <mat-option *ngFor="let p of province" value="{{p.Name}}" (click) = "proviceSelect(p.Code)">{{ p.Name }}</mat-option>
+                </mat-select>
             </mat-form-field>
 
-
+            <mat-form-field *ngIf="cities">
+                <mat-label>شهر</mat-label>
+                <mat-select  formControlName="city">
+                  <mat-option *ngFor="let c of cities" value="{{c.Name}}" (click) = "citySelect(c.Code)">{{ c.Name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
         </form>
     </mat-card-content>
+    <mat-card-actions class="card-actions">
+        <button mat-flat-button color="primary" (click)="submit()">ثبت</button>
+    </mat-card-actions>
 </mat-card>
