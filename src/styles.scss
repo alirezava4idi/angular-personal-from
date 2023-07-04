@@ -39,7 +39,7 @@ $personel-theme: mat.define-light-theme((
     margin: 0;
     padding: 0;
     
-    font-family: Vazirmatn;
+    font-family: Vazirmatn FD;
 
     direction: rtl;
 }
@@ -64,5 +64,3 @@ body {
     width: 100vw;
     overflow-x: hidden;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
