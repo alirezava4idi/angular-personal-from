@@ -31,9 +31,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 
 
-import { submitPersonReducer } from '../app/personal-register/reducers/register.reducers';
+import { IsEditingPerson, submitPersonReducer } from '../app/personal-register/reducers/register.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { DialogComponent } from './personal-register/dialog/dialog.component';
+import { EditDialogComponent } from './personal-register/edit-dialog/edit-dialog.component';
 
 
 
@@ -46,13 +47,14 @@ import { DialogComponent } from './personal-register/dialog/dialog.component';
     PersonalRegisterComponent,
     PersonalFormComponent,
     PersonalDetailsComponent,
-    DialogComponent
+    DialogComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({persons: submitPersonReducer}, {}),
+    StoreModule.forRoot({persons: submitPersonReducer, person: IsEditingPerson}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatToolbarModule,

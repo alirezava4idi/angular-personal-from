@@ -14,6 +14,20 @@ export const submitForm = createAction(
 )
 
 export const deletePerson = createAction(
-    '[Personel Delete] Delete Person',
+    '[Personel Register] Delete Person',
     props<{id: number}>()
+)
+
+export const isEditingPerson = createAction(
+    '[Personel Register] Is Editing a Person',
+    props<{person: Person}>()
+)
+
+export const cancelEditPerson = createAction(
+    '[Personel Register] Cancel Edit'
+)
+
+export const editPerson = createAction(
+    '[Personel Register] Edit Person',
+    props<{person: Person}>()
 )

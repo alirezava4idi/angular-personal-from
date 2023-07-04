@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { DialogComponent } from '../dialog/dialog.component';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+
+import * as RegisterActions from '../actions/register.actions';
 
 const ELEMENT_DATA: any[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
@@ -38,5 +41,15 @@ export class PersonalDetailsComponent {
     this.dialog.open(DialogComponent, {
       data: {id}
     })
+  }
+
+  editPerson(person: Person){
+    this.store.dispatch(RegisterActions.isEditingPerson({person}))
+    
+    this.dialog.open(EditDialogComponent, {
+      data: {person}
+    })
+
+    
   }
 }

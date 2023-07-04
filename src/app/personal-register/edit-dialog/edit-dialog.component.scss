@@ -1,0 +1,43 @@
+.form-card {
+    margin: 1rem;
+    border-radius: 8px;
+
+    form {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        .date-picker {
+            position: relative;
+        }
+    }
+}
+
+::ng-deep .datepicker-outer-container{
+    position: absolute !important;
+    z-index: 1;
+}
+
+.gender {
+    display: flex;
+    align-items: center;
+}
+::ng-deep .mat-mdc-select-trigger {
+    text-align: right !important;
+}
+
+// ::ng-deep .mat-mdc-option {
+// }
+
+.mdc-card__actions {
+    flex-direction: row-reverse;
+}
+
+@media screen and (max-width: 500px) {
+    form > * {
+        flex: 1 1 auto;
+    }
+    .mdc-card__actions  > *{
+        width: 100%;
+    }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import province from '../../../assets/province.json';
@@ -15,6 +15,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./personal-form.component.scss']
 })
 export class PersonalFormComponent implements OnInit {
+
+  @Input() person: any;
+
   
   form = new FormGroup({
     fname: new FormControl('', Validators.required),
@@ -27,18 +30,22 @@ export class PersonalFormComponent implements OnInit {
   });
 
   province = province
-  cities: City[] | undefined = undefined
+  cities: City[] | undefined = undefined 
 
   persons$: Observable<Person[]>;
 
-  constructor(private store: Store<{persons: Person[]}>) {
+  person$: Observable<Person>;
+
+  constructor(private store: Store<{persons: Person[], IsEditingPerson: Person}>) {
     this.store.dispatch(RegisterActions.enterRegister());
     this.persons$ = this.store.select(state => state.persons);
-
+    this.person$ = this.store.select(state => state.IsEditingPerson)
   }
 
+  
+  
+
   proviceSelect(id: number) {
-    console.log(`province ${id}`)
     this.cities = city.filter(c => c.Province_Code === id && c.Country_Code === 1)
   }
 
@@ -83,7 +90,7 @@ export class PersonalFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.person$.subscribe(value => console.log(value))
   }
 
 }

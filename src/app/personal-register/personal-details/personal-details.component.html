@@ -37,7 +37,7 @@
     <!-- gender Column -->
     <ng-container matColumnDef="gender">
       <th mat-header-cell *matHeaderCellDef> جنسیت </th>
-      <td mat-cell *matCellDef="let person"> {{person.gender === 1 ? 'خانم' : 'آقا'}} </td>
+      <td mat-cell *matCellDef="let person"> {{person.gender ? (person.gender === "1" ? 'خانم' : 'آقا') : '-'}} </td>
     </ng-container>
 
     <!-- Address Column -->
@@ -51,7 +51,7 @@
       
       <th mat-header-cell *matHeaderCellDef> عملیات </th>
       <td mat-cell *matCellDef="let person" class="ops-btns">
-        <button mat-stroked-button color="primary" >ویرایش</button>
+        <button mat-stroked-button color="primary" (click)="editPerson(person)" >ویرایش</button>
         <button mat-raised-button color="warn" (click)="deletePerson(person.id)" >حذف</button>
       </td>
     </ng-container>
