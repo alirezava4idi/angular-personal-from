@@ -81,6 +81,7 @@ export class PersonalFormComponent implements OnInit {
           
         }
         this.store.dispatch(RegisterActions.submitForm({person}))
+        this.form.reset()
       }
     }
 
